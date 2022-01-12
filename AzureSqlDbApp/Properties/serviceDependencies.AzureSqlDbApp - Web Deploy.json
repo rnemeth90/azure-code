@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/rnemeth-lab-sqlsvr-01/databases/appdb",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:SQLConnection"
+    }
+  }
+}
