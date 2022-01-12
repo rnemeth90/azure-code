@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "rxsWrHxELabPvgwjmTy8s4sTBDmTI8gnvbfNHEDpv6t8R8wJbrfUSXtGZMC0ek8yhopht8LRxS79nqp9FP8xEw==",
+  "dgSpecHash": "GWY6LogeiZNMqmmgsd7XynKCjwj9w+vz5BlkqQB13KUuEwf2lBY1/g9BpiYs5rO5ggXjgKScYOTYbOTDADnhPw==",
   "success": true,
-  "projectFilePath": "C:\\repos\\training\\AZ204\\service-bus\\ServiceBusApp\\ServiceBusApp.csproj",
+  "projectFilePath": "C:\\repos\\azure-code\\ServiceBus\\ServiceBusApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Ryan.Nemeth\\.nuget\\packages\\azure.core\\1.21.0\\azure.core.1.21.0.nupkg.sha512",
     "C:\\Users\\Ryan.Nemeth\\.nuget\\packages\\azure.core.amqp\\1.2.0\\azure.core.amqp.1.2.0.nupkg.sha512",

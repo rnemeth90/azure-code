@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\repos\\training\\AZ204\\service-bus\\ServiceBusApp\\ServiceBusApp.csproj": {}
+    "C:\\repos\\azure-code\\ServiceBus\\ServiceBusApp.csproj": {}
   },
   "projects": {
-    "C:\\repos\\training\\AZ204\\service-bus\\ServiceBusApp\\ServiceBusApp.csproj": {
+    "C:\\repos\\azure-code\\ServiceBus\\ServiceBusApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\repos\\training\\AZ204\\service-bus\\ServiceBusApp\\ServiceBusApp.csproj",
+        "projectUniqueName": "C:\\repos\\azure-code\\ServiceBus\\ServiceBusApp.csproj",
         "projectName": "ServiceBusApp",
-        "projectPath": "C:\\repos\\training\\AZ204\\service-bus\\ServiceBusApp\\ServiceBusApp.csproj",
+        "projectPath": "C:\\repos\\azure-code\\ServiceBus\\ServiceBusApp.csproj",
         "packagesPath": "C:\\Users\\Ryan.Nemeth\\.nuget\\packages\\",
-        "outputPath": "C:\\repos\\training\\AZ204\\service-bus\\ServiceBusApp\\obj\\",
+        "outputPath": "C:\\repos\\azure-code\\ServiceBus\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Ryan.Nemeth\\AppData\\Roaming\\NuGet\\NuGet.Config",
