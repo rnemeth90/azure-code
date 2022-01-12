@@ -1,0 +1,3 @@
+is_global = true
+build_property.RootNamespace = AzureStorageQueue
+build_property.ProjectDir = C:\repos\azure-code\AzureStorageQueue\
