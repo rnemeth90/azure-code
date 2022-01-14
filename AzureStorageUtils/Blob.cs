@@ -21,6 +21,7 @@ namespace AzureStorageUtils
             return $"Uploaded {blobName}!";
         }
 
+        // WIP
         public static List<string> UploadBlobs(string connectionString, string containerName)
         {
             BlobServiceClient client = new BlobServiceClient(connectionString);
@@ -82,6 +83,17 @@ namespace AzureStorageUtils
 
             StreamWriter writer = new StreamWriter(memory);
             writer.WriteLine("Hello World!");
+        }
+
+        public static void GetBlobs(string connectionString, string containerName)
+        { 
+            BlobServiceClient client = new BlobServiceClient(connectionString);
+            BlobContainerClient containerClient = client.GetBlobContainerClient(containerName);
+            
+            foreach (var blob in containerClient.GetBlobs())
+            {
+                Console.WriteLine($"Found: {blob.Name}");
+            }
         }
     }
 }
