@@ -8,7 +8,7 @@ namespace AzureStorageUtils
 {
     class Queue
     {
-        public static string AddMessages(string queueName, string connectionString, List<string> messages)
+        public static void AddMessages(string queueName, string connectionString, List<string> messages)
         {
             QueueClient queueClient = new QueueClient(connectionString, queueName);
             
@@ -16,15 +16,16 @@ namespace AzureStorageUtils
             {
                 for (int i = 0; i < messages.Count; i++)
                 {
-                    queueClient.SendMessage(messages[i]);
+                    var bytes = System.Text.Encoding.UTF8.GetBytes(messages[i]);
+                    var encodedMessage = Convert.ToBase64String(bytes);
+                    queueClient.SendMessage(encodedMessage);
                     Console.WriteLine($"Message {messages[i]} has been sent.");
                 }
             }
-
-            return $"All messages have been sent to {queueName}";
+            Console.WriteLine($"All messages have been sent to {queueName}"); 
         }
 
-        public static List<PeekedMessage> PeekMessages(string queueName, string connectionString)
+        public static void PeekMessages(string queueName, string connectionString)
         {
             QueueClient queueClient = new QueueClient(connectionString, queueName);
             List<PeekedMessage> peekedMessages = new List<PeekedMessage>();
@@ -37,8 +38,24 @@ namespace AzureStorageUtils
                     peekedMessages.Add(message);
                 }
             }
+            foreach (var message in peekedMessages)
+            {
+                Console.WriteLine($"Found message: {message.MessageId}/{message.Body}");
+            }
+        }
 
-            return peekedMessages;
+        public static void ReceiveMessages(string queueName, string connectionString)
+        {
+            QueueClient queueClient = new QueueClient(connectionString, queueName);
+            if (queueClient.Exists())
+            {
+                QueueMessage[] messages = queueClient.ReceiveMessages(32);
+
+                foreach (var message in messages)
+                {
+                    Console.WriteLine($"Received message {message.MessageId}/{message.Body}");
+                }
+            }
         }
     }
 }

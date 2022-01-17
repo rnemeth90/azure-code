@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Azure.Data.Tables;
 using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 using Azure.Storage.Blobs.Specialized;
@@ -11,27 +12,36 @@ namespace AzureStorageUtils
 {
   class _EntryPoint
   {
-    private static string connection_string = "";
+    private static string connection_string = "DefaultEndpointsProtocol=https;AccountName=storageaccountrneme8f24;AccountKey=jAhzgzRLljSrgcqDFcRTARibzpjw/yCyaVgep57GErz2UvWvYel0vfpvzARWhXOZwDx/eyCP/ANJRdTbOeCwug==;EndpointSuffix=core.windows.net";
     private static string container_name = "";
-    private static string blob_name = "";
+    private static string table_name = "Products";
+    private static string queueName = "appqueue";
 
     static void Main(string[] args)
     {
-      BlobServiceClient blobServiceClient = new BlobServiceClient(connection_string);
-      BlobContainerClient containerClient = blobServiceClient.GetBlobContainerClient(container_name);
-      BlobClient blobClient = containerClient.GetBlobClient(blob_name);
+            //Table.Create(table_name, connection_string);
+            //List<TableEntity> products = new List<TableEntity>
+            //{
+            //    new TableEntity("ProductA", "Widget"),
+            //    new TableEntity("ProductB", "Whoza"),
+            //    new TableEntity("ProductC", "Wingding")
+            //};
 
-      BlobProperties blobProperties = blobClient.GetProperties();
-
-      IDictionary<string, string> _metadata = blobProperties.Metadata;
-
-
-      foreach (var item in _metadata)
-      {
-        Console.WriteLine($"{item.Key}:{item.Value}");
-      }
-
-      //Console.WriteLine($"{blobProperties.AccessTier}");
-    }
+            //foreach (var item in products)
+            //{
+            //    Table.InsertEntity(item, table_name, connection_string);
+            //}
+            int messageCount = 20;
+            List<string> list = new List<string>();
+            for (int i = 0; i < messageCount; i++)
+            {
+                list.Add($"message{i}");
+            }
+            Queue.AddMessages(queueName, connection_string, list);
+            //Queue.PeekMessages(queueName,connection_string);
+            //Console.WriteLine("///////////////////////////////");
+            //Queue.ReceiveMessages(queueName,connection_string); 
+            //Console.WriteLine($"{blobProperties.AccessTier}");
+        }
   }
 }

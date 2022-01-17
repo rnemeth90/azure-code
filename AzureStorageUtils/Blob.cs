@@ -13,11 +13,8 @@ namespace AzureStorageUtils
         {
             BlobServiceClient client = new BlobServiceClient(connectionString);
             BlobContainerClient containerClient = client.GetBlobContainerClient(containerName);
-
             BlobClient blobClient = containerClient.GetBlobClient(blobName);
             blobClient.Upload(blobPath);
-
-
             return $"Uploaded {blobName}!";
         }
 
