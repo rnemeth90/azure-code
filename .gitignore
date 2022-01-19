@@ -235,3 +235,4 @@ _Pvt_Extensions
 
 # Sensitive data
 appsettings.json
+appsettings.development.json
