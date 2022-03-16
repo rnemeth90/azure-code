@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TableStorage", "TableStorage\TableStorage.csproj", "{10D34452-35C1-4C06-9A13-AEE07DDB615B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{10D34452-35C1-4C06-9A13-AEE07DDB615B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10D34452-35C1-4C06-9A13-AEE07DDB615B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10D34452-35C1-4C06-9A13-AEE07DDB615B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10D34452-35C1-4C06-9A13-AEE07DDB615B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F4E5B07A-7A9D-4757-91D6-31F8CDADDC11}
+	EndGlobalSection
+EndGlobal

@@ -27,7 +27,7 @@ namespace Sqlapp
             // Ensure to add the services
             services.AddMvc();
             services.AddTransient<CourseService>();
-            services.AddApplicationInsightsTelemetry(Configuration["APPINSIGHTS_CONNECTIONSTRING"]);
+            services.AddApplicationInsightsTelemetry(Configuration.GetConnectionString("APPINSIGHTS_CONNECTIONSTRING"));
             services.ConfigureTelemetryModule<DependencyTrackingTelemetryModule>((module,o) => { module.EnableSqlCommandTextInstrumentation = true; });
         }
 
