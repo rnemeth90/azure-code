@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.ApplicationInsights.DependencyCollector;
 using Microsoft.Extensions.Logging;
+using Sqlapp.Util;
+using Sqlapp.Interfaces;
 
 namespace Sqlapp
 {
@@ -27,7 +29,8 @@ namespace Sqlapp
         {
             // Ensure to add the services
             services.AddMvc();
-            services.AddTransient<CourseService>();
+            services.AddTransient<CourseService>(_ => new CourseService(Configuration.GetConnectionString("SQLConnection")));
+            //services.AddScoped<ICourseService, CourseService>();
             services.AddApplicationInsightsTelemetry(Configuration.GetConnectionString("APPINSIGHTS_CONNECTIONSTRING"));
             services.ConfigureTelemetryModule<DependencyTrackingTelemetryModule>((module,o) => { module.EnableSqlCommandTextInstrumentation = true; });
         }

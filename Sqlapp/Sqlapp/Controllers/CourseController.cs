@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Sqlapp.Interfaces;
 using Sqlapp.Models;
 using Sqlapp.Services;
 using System;
@@ -11,18 +12,19 @@ namespace Sqlapp.Controllers
 {
     public class CourseController : Controller
     {
-        private readonly CourseService _course_service;
-        private readonly IConfiguration _configuration;
+        //private readonly IConfiguration _configuration;
+        private ICourseService _courseService;
 
-        public CourseController(CourseService _svc,IConfiguration configuration)
+        public CourseController(IConfiguration configuration)
         {
-            _course_service = _svc;
-            _configuration = configuration;
+            //_configuration = configuration;
+            //var _courseService = Factory.CreateCourseService(_configuration.GetConnectionString("SQLConnection"));
         }
+
         public IActionResult Index()
         {
             // Use the configuration class to get the connection string
-            IEnumerable<Course> _course_list = _course_service.GetCourses(_configuration.GetConnectionString("SQLConnection"));
+            IEnumerable<ICourse> _course_list = _courseService.GetCourses();
             return View(_course_list);
         }
 
@@ -33,13 +35,13 @@ namespace Sqlapp.Controllers
                 return NotFound();
             }
 
-            return View(_course_service.GetCourse(id, _configuration.GetConnectionString("SQLConnection")));
+            return View(_courseService.GetCourse(id));
         }
 
         [HttpPost]
         public IActionResult Edit(Course course)
         {
-            _course_service.UpdateCourse(course, _configuration.GetConnectionString("SQLConnection"));
+            _courseService.UpdateCourse(course);
             return RedirectToAction("Index");
         }
     }
