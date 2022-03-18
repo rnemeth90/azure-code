@@ -29,8 +29,8 @@ namespace Sqlapp
         {
             // Ensure to add the services
             services.AddMvc();
-            services.AddTransient<CourseService>(_ => new CourseService(Configuration.GetConnectionString("SQLConnection")));
-            //services.AddScoped<ICourseService, CourseService>();
+            //services.AddTransient<CourseService>(_ => new CourseService(Configuration.GetConnectionString("SQLConnection")));
+            services.AddScoped<ICourseService, CourseService>(_ => new CourseService(Configuration.GetConnectionString("SQLConnection")));
             services.AddApplicationInsightsTelemetry(Configuration.GetConnectionString("APPINSIGHTS_CONNECTIONSTRING"));
             services.ConfigureTelemetryModule<DependencyTrackingTelemetryModule>((module,o) => { module.EnableSqlCommandTextInstrumentation = true; });
         }

@@ -4,9 +4,9 @@ using Sqlapp.Services;
 using StackExchange.Redis;
 using System;
 
-namespace Sqlapp
+namespace Sqlapp.Factories
 {
-    public static class Factory
+    public static class CourseFactory
     {
         private static Lazy<IConnectionMultiplexer> CreateConnection(string connectionString)
         {

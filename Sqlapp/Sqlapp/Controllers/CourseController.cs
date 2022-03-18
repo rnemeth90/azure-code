@@ -12,18 +12,16 @@ namespace Sqlapp.Controllers
 {
     public class CourseController : Controller
     {
-        //private readonly IConfiguration _configuration;
         private ICourseService _courseService;
 
-        public CourseController(IConfiguration configuration)
+        public CourseController(ICourseService courseService)
         {
-            //_configuration = configuration;
-            //var _courseService = Factory.CreateCourseService(_configuration.GetConnectionString("SQLConnection"));
+            _courseService = courseService;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
-            // Use the configuration class to get the connection string
             IEnumerable<ICourse> _course_list = _courseService.GetCourses();
             return View(_course_list);
         }
@@ -34,12 +32,21 @@ namespace Sqlapp.Controllers
             {
                 return NotFound();
             }
+            return View(_courseService.GetCourse(id));
+        }
 
+        public IActionResult Details(string id)
+        {
+
+            if (id == null)
+            {
+                return NotFound();
+            }
             return View(_courseService.GetCourse(id));
         }
 
         [HttpPost]
-        public IActionResult Edit(Course course)
+        public IActionResult Edit(ICourse course)
         {
             _courseService.UpdateCourse(course);
             return RedirectToAction("Index");

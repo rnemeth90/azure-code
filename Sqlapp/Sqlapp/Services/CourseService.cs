@@ -4,6 +4,7 @@ using System.Linq;
 using Microsoft.Data.SqlClient;
 using System.Text;
 using Sqlapp.Interfaces;
+using Sqlapp.Factories;
 
 namespace Sqlapp.Services
 {
@@ -27,7 +28,7 @@ namespace Sqlapp.Services
             {
                 while (_reader.Read())
                 {
-                    ICourse _course = Factory.CreateCourse();
+                    ICourse _course = CourseFactory.CreateCourse();
                     _course.CourseID = _reader.GetInt32(0);
                     _course.CourseName = _reader.GetString(1);
                     _course.Rating = _reader.GetDecimal(2);
@@ -58,7 +59,6 @@ namespace Sqlapp.Services
             ICourse _course = _courses.FirstOrDefault(m => m.CourseID == Int32.Parse(id));
             return _course;
         }
-
     }
 }
 

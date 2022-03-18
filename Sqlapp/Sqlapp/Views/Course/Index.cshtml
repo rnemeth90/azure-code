@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Sqlapp.Models.Course>
+﻿@model IEnumerable<Sqlapp.Interfaces.ICourse>
 @{
     ViewData["Title"] = "Home page";
 }
@@ -30,6 +30,10 @@
 
 <div class="text-center">
     <h1 class="display-4">This is a list of courses</h1>
+    <div style="text-align:right" >
+        @*<td><a  asp-action="Create" asp-route-id=Model>Add New</a></td>*@
+    </div>
+
 </div>
 
 <div>
@@ -50,6 +54,7 @@
                     <td>@course.CourseName</td>
                     <td>@course.Rating</td>
                     <td><a asp-action="Edit" asp-route-id="@course.CourseID">Edit</a></td>
+                    <td><a asp-action="Details" asp-route-id="@course.CourseID">Details</a></td>
                 </tr>
             }            
         </tbody>
