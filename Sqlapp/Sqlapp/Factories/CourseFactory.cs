@@ -21,9 +21,5 @@ namespace Sqlapp.Factories
             return new Course();
         }
 
-        public static ICourseService CreateCourseService(string connectionString)
-        {
-            return new CourseService(connectionString);
-        }
     }
 }

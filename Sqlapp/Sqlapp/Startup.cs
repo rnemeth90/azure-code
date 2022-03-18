@@ -13,6 +13,8 @@ using Microsoft.ApplicationInsights.DependencyCollector;
 using Microsoft.Extensions.Logging;
 using Sqlapp.Util;
 using Sqlapp.Interfaces;
+using Sqlapp.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Sqlapp
 {
@@ -30,19 +32,25 @@ namespace Sqlapp
             // Ensure to add the services
             services.AddMvc();
             //services.AddTransient<CourseService>(_ => new CourseService(Configuration.GetConnectionString("SQLConnection")));
-            services.AddScoped<ICourseService, CourseService>(_ => new CourseService(Configuration.GetConnectionString("SQLConnection")));
+            //services.AddScoped<ICourse, CourseService>(_ => new CourseService(Configuration.GetConnectionString("SQLConnection")));
+            services.AddScoped<ICourseDbContext, CourseDbContext>();
+            services.AddScoped<ICourseService, CourseService>();
+            services.AddDbContext<CourseDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SqlConnection")));
             services.AddApplicationInsightsTelemetry(Configuration.GetConnectionString("APPINSIGHTS_CONNECTIONSTRING"));
             services.ConfigureTelemetryModule<DependencyTrackingTelemetryModule>((module,o) => { module.EnableSqlCommandTextInstrumentation = true; });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory logger)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory logger, CourseDbContext dbContext)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 logger.CreateLogger<Startup>();
             }
+
+            dbContext.Database.EnsureCreated();
+            dbContext.Database.Migrate();
 
             app.UseRouting();
 

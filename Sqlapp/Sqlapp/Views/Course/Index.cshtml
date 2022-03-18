@@ -30,10 +30,6 @@
 
 <div class="text-center">
     <h1 class="display-4">This is a list of courses</h1>
-    <div style="text-align:right" >
-        @*<td><a  asp-action="Create" asp-route-id=Model>Add New</a></td>*@
-    </div>
-
 </div>
 
 <div>
@@ -43,7 +39,9 @@
                 <th scope="col">Course ID</th>
                 <th scope="col">Course Name</th>
                 <th scope="col">Rating</th>
-                <td><a asp-action="Create" asp-route-id=Model>Add New</a></td>
+                <div style="text-align:right">
+                   <td><a asp-action="Create" asp-route-id=Model>Add New</a></td>
+                </div>
             </tr>
         </thead>
         <tbody>

@@ -5,59 +5,39 @@ using Microsoft.Data.SqlClient;
 using System.Text;
 using Sqlapp.Interfaces;
 using Sqlapp.Factories;
+using Sqlapp.Data;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Sqlapp.Services
 {
     public class CourseService : ICourseService
     {
-        private static string _sqlConnectionString;
+        private CourseDbContext _dbContext;
 
-        public CourseService(string sqlConnectionString)
+        public CourseService(CourseDbContext dbContext)
         {
-            _sqlConnectionString = sqlConnectionString;
+            _dbContext = dbContext;
         }
 
         public IEnumerable<ICourse> GetCourses()
         {
-            List<ICourse> _lst = new List<ICourse>();
-            string _statement = "SELECT CourseID,CourseName,rating from Course";
-            var _connection = new SqlConnection(_sqlConnectionString);
-            _connection.Open();
-            var _sqlcommand = new SqlCommand(_statement, _connection);
-            using (SqlDataReader _reader = _sqlcommand.ExecuteReader())
-            {
-                while (_reader.Read())
-                {
-                    ICourse _course = CourseFactory.CreateCourse();
-                    _course.CourseID = _reader.GetInt32(0);
-                    _course.CourseName = _reader.GetString(1);
-                    _course.Rating = _reader.GetDecimal(2);
-                    _lst.Add(_course);
-                }
-            }
-            _connection.Close();
-            return _lst;
+            return _dbContext.Courses;
         }
 
-        public void UpdateCourse(ICourse p_course)
+        public void UpdateCourse(ICourse c)
         {
-            StringBuilder _statement = new StringBuilder("UPDATE Course SET Rating=");
-            _statement.Append(p_course.Rating);
-            _statement.Append(" WHERE CourseID=");
-            _statement.Append(p_course.CourseID);
-
-            SqlConnection _connection = new SqlConnection(_sqlConnectionString);
-            _connection.Open();
-            SqlCommand _sqlcommand = new SqlCommand(_statement.ToString(), _connection);
-            _sqlcommand.ExecuteNonQuery();
-
+            var course = _dbContext.Courses.Find(c);
+            course.Rating = c.Rating;
+            course.Description = c.Description;
+            course.Instructor = c.Instructor;
+            course.CourseName = c.CourseName;
+            _dbContext.SaveChanges();
         }
 
-        public ICourse GetCourse(string id)
+        public ICourse GetCourse(int id)
         {
-            IEnumerable<ICourse> _courses = this.GetCourses();
-            ICourse _course = _courses.FirstOrDefault(m => m.CourseID == Int32.Parse(id));
-            return _course;
+            return _dbContext.Courses.Find(id);
         }
     }
 }

@@ -12,5 +12,8 @@ namespace Sqlapp.Models
         public int CourseID { get; set; }
         public string CourseName { get; set; }
         public decimal Rating { get; set; }
+        public string Description { get; set; }
+        public string Instructor { get; set; }
+
     }
 }

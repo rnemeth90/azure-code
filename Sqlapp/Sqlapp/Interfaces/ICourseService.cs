@@ -5,8 +5,8 @@ namespace Sqlapp.Interfaces
 {
     public interface ICourseService
     {
-        ICourse GetCourse(string id);
+        ICourse GetCourse(int id);
         IEnumerable<ICourse> GetCourses();
-        void UpdateCourse(ICourse p_course);
+        void UpdateCourse(ICourse c);
     }
 }

@@ -26,7 +26,7 @@ namespace Sqlapp.Controllers
             return View(_course_list);
         }
 
-        public IActionResult Edit(string id)
+        public IActionResult Edit(int id)
         {
             if (id == null)
             {
@@ -35,7 +35,7 @@ namespace Sqlapp.Controllers
             return View(_courseService.GetCourse(id));
         }
 
-        public IActionResult Details(string id)
+        public IActionResult Details(int id)
         {
 
             if (id == null)
