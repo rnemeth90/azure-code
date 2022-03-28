@@ -8,6 +8,7 @@ using Sqlapp.Factories;
 using Sqlapp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
+using Sqlapp.Models;
 
 namespace Sqlapp.Services
 {
@@ -25,9 +26,9 @@ namespace Sqlapp.Services
             return _dbContext.Courses;
         }
 
-        public void UpdateCourse(ICourse c)
+        public void UpdateCourse(int id, Course c)
         {
-            var course = _dbContext.Courses.Find(c);
+            var course = _dbContext.Courses.Find(id);
             course.Rating = c.Rating;
             course.Description = c.Description;
             course.Instructor = c.Instructor;

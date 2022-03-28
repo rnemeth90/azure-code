@@ -1,4 +1,5 @@
 ﻿using Sqlapp.Interfaces;
+using Sqlapp.Models;
 using System.Collections.Generic;
 
 namespace Sqlapp.Interfaces
@@ -7,6 +8,6 @@ namespace Sqlapp.Interfaces
     {
         ICourse GetCourse(int id);
         IEnumerable<ICourse> GetCourses();
-        void UpdateCourse(ICourse c);
+        void UpdateCourse(int id, Course c);
     }
 }

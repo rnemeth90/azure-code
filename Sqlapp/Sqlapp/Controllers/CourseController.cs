@@ -46,9 +46,9 @@ namespace Sqlapp.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(ICourse course)
+        public IActionResult Edit(int id, Course course)
         {
-            _courseService.UpdateCourse(course);
+            _courseService.UpdateCourse(id, course);
             return RedirectToAction("Index");
         }
     }
