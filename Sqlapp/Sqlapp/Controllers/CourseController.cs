@@ -26,6 +26,13 @@ namespace Sqlapp.Controllers
             return View(_course_list);
         }
 
+        public IActionResult Create([FromBody]Course course)
+        {
+            _courseService.CreateCourse(course);
+            var id = course.CourseID;
+            return View(_courseService.GetCourse(id));
+        }
+
         public IActionResult Edit(int id)
         {
             if (id == null)
@@ -45,11 +52,11 @@ namespace Sqlapp.Controllers
             return View(_courseService.GetCourse(id));
         }
 
-        [HttpPost]
-        public IActionResult Edit(int id, Course course)
-        {
-            _courseService.UpdateCourse(id, course);
-            return RedirectToAction("Index");
-        }
+        //[HttpPost]
+        //public IActionResult Edit(int id, Course course)
+        //{
+        //    _courseService.UpdateCourse(id, course);
+        //    return RedirectToAction("Index");
+        //}
     }
 }

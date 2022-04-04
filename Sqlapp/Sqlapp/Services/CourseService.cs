@@ -26,6 +26,12 @@ namespace Sqlapp.Services
             return _dbContext.Courses;
         }
 
+        public void CreateCourse(Course c)
+        {
+            _dbContext.Courses.Add(c);
+            _dbContext.SaveChanges();
+        }
+
         public void UpdateCourse(int id, Course c)
         {
             var course = _dbContext.Courses.Find(id);

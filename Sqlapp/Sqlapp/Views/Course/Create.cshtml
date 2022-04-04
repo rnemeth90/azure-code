@@ -1,0 +1,35 @@
+﻿@model Sqlapp.Interfaces.ICourse
+@{
+    ViewData["Title"] = "Create Page";
+}
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/cyborg/bootstrap.min.css" integrity="sha384-nEnU7Ae+3lD52AK+RGNzgieBWMnEfgTbRHIwEvp1XXPdqdO6uLTd/NwXbzboqjc2" crossorigin="anonymous">
+</head>
+
+<div class="text-center">
+    <h1 style="text-align:left" >Create Page</h1>
+</div>
+
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">                
+                <input type="hidden" asp-for="CourseID" class="form-control" />
+
+                <label asp-for="CourseName" class="control-label"></label>
+                <input asp-for="CourseName" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Rating" class="control-label"></label>
+                <input asp-for="Rating" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input asp-action="Create" type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+}

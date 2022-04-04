@@ -9,5 +9,6 @@ namespace Sqlapp.Interfaces
         ICourse GetCourse(int id);
         IEnumerable<ICourse> GetCourses();
         void UpdateCourse(int id, Course c);
+        void CreateCourse(Course course);
     }
 }

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32328.378
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureAdAuthApp", "AzureAdAuthApp.csproj", "{7C56F6F8-29E2-4A73-998F-5C0EB98CA01D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7C56F6F8-29E2-4A73-998F-5C0EB98CA01D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C56F6F8-29E2-4A73-998F-5C0EB98CA01D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C56F6F8-29E2-4A73-998F-5C0EB98CA01D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C56F6F8-29E2-4A73-998F-5C0EB98CA01D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {47ACB0C1-87A2-4399-A22B-7F2BA2B6F181}
+	EndGlobalSection
+EndGlobal

@@ -53,10 +53,12 @@ namespace Sqlapp
             dbContext.Database.Migrate();
 
             app.UseRouting();
+            //app.UseDefaultFiles();
 
             // Ensure to map the controllers accordingly
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllers();
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Course}/{action=Index}/{id?}");
