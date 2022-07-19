@@ -10,9 +10,9 @@ namespace Receiver
 {
     internal class Receiver
     {
-        private static string connectionString = "Endpoint=sb://azrtneventhub01.servicebus.windows.net/;SharedAccessKeyName=connstring;SharedAccessKey=v233BlYdz44dLp8OEw3wC7A0QQDNlQ4K+V3MR6K2l5Q=;EntityPath=apphub";
-        private const string blobStorageConnectionString = "DefaultEndpointsProtocol=https;AccountName=storageaccountrneme8f24;AccountKey=jAhzgzRLljSrgcqDFcRTARibzpjw/yCyaVgep57GErz2UvWvYel0vfpvzARWhXOZwDx/eyCP/ANJRdTbOeCwug==;EndpointSuffix=core.windows.net";
-        private const string blobContainerName = "eventhub";
+        private static string connectionString = "";
+        private const string blobStorageConnectionString = "";
+        private const string blobContainerName = "";
         static BlobContainerClient storageClient;
         static EventProcessorClient processor;
 
