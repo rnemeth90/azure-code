@@ -10,7 +10,7 @@ namespace MSLearn_Storage
 {
     internal class Program
     {
-        internal static string connectionString = "DefaultEndpointsProtocol=https;AccountName=storageaccountrneme8f24;AccountKey=jAhzgzRLljSrgcqDFcRTARibzpjw/yCyaVgep57GErz2UvWvYel0vfpvzARWhXOZwDx/eyCP/ANJRdTbOeCwug==;EndpointSuffix=core.windows.net";
+        internal static string connectionString = "";
         static BlobServiceClient blobServiceClient = new(connectionString);
         static AsyncPageable<BlobContainerItem> blobContainerClient = blobServiceClient.GetBlobContainersAsync();
 
