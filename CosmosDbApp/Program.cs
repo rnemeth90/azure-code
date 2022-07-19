@@ -10,10 +10,10 @@ namespace CosmosDbApp
 {
     internal class Program
     {
-        private static readonly string EndpointUri = @"https://azrtncosmosdb01.documents.azure.com:443/";
-        private static readonly string PrimaryKey = @"SkdfDyMkRogRCZFK9ISDMQ6wpuofiTQIzbZTF1lqoS96oS1wsO45uzdLVu7itGvaxomiKjJO7xfWtic5sAkSgw==";
-        private string databaseId = "FamilyDatabase";
-        private string containerId = "FamilyContainer";
+        private static readonly string EndpointUri = @"";
+        private static readonly string PrimaryKey = @"";
+        private string databaseId = "";
+        private string containerId = "";
         private CosmosClient cosmosClient;
         private Database database;
         private Container container;
