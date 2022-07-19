@@ -11,7 +11,7 @@ namespace webapi.Services
 {
     public class CourseService
     {
-        private static string _connectionString = @"DefaultEndpointsProtocol=https;AccountName=cs21003200044ebe600;AccountKey=AHcAUuTVXoogPpMkUZ/YBrmqrUB59hlh5IeBDRRsl2ONTY45C+vljecHkVnV4Sh3t1Npi5QxV7mZXIUVgfm39g==;EndpointSuffix=core.windows.net";
+        private static string _connectionString = @"";
         private static string _containerName = "data";
         private static string _blobName = "Courses.json";
 
