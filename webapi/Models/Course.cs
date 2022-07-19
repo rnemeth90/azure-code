@@ -1,8 +1,8 @@
 ﻿namespace webapi.Models
 {
-    public class Course
+    public class Course : ICourse
     {
-        public string CourseId { get; set; }
+        public int CourseId { get; set; }
         public string CourseName { get; set; }
         public decimal Rating { get; set; }
     }

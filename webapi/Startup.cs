@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using webapi.Controllers;
 using webapi.Services;
 
 namespace webapi
@@ -20,11 +21,15 @@ namespace webapi
             services.AddControllers();
             services.AddTransient<CourseService>();
             services.AddSwaggerGen();
+            services.AddLogging();
+            services.Add(new ServiceDescriptor(typeof(ICourseController), new CourseController(new CourseService())));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            var services = app.ApplicationServices;
+
             if (env.IsDevelopment())
             {
                 app.UseSwagger();

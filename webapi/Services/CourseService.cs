@@ -56,5 +56,27 @@ namespace webapi.Services
                 blobClient.Upload(ms);
             }
         }
+
+        internal void CreateCourses()
+        {
+            List<Course> courses = new List<Course>
+            {
+                new Course() { CourseId = 0, CourseName = "Course1", Rating=5},
+                new Course() { CourseId = 1, CourseName = "Course2", Rating=1},
+                new Course() { CourseId = 2, CourseName = "Course3", Rating=4},
+                new Course() { CourseId = 3, CourseName = "Course4", Rating=7},
+                new Course() { CourseId = 4, CourseName = "Course5", Rating=9},
+                new Course() { CourseId = 5, CourseName = "Course6", Rating=3},
+                new Course() { CourseId = 6, CourseName = "Course7", Rating=3}
+            };
+
+            var highlyRatedCourses = courses.Where(c => c.Rating > 7);
+            var lowlyRatedCourses = courses.Where(c => c.Rating < 3);
+
+            foreach (var item in highlyRatedCourses)
+            {
+                System.Console.WriteLine(item.CourseName);
+            }
+        }
     }
 }
