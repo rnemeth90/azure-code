@@ -14,52 +14,57 @@ namespace webapi.Services
     private static string _connectionString = @"";
     private static string _containerName = "data";
     private static string _blobName = "Courses.json";
-
-    internal IEnumerable<Course> GetCourses()
+    public class CourseService
     {
-      BlobServiceClient serviceClient = new BlobServiceClient(_connectionString);
-      BlobContainerClient blobContainerClient = serviceClient.GetBlobContainerClient(_containerName);
-      BlobClient blobClient = blobContainerClient.GetBlobClient(_blobName);
+      private static string _connectionString = @"";
+      private static string _containerName = "data";
+      private static string _blobName = "Courses.json";
 
-      var response = blobClient.Download();
-      var reader = new StreamReader(response.Value.Content);
-      return JsonSerializer.Deserialize<Course[]>(reader.ReadToEnd());
-    }
-
-    internal Course GetCourse(string id)
-    {
-      IEnumerable<Course> courses = this.GetCourses();
-      return courses.FirstOrDefault(c => c.CourseId == id);
-    }
-
-    internal void AddCourse(Course course)
-    {
-      List<Course> courses;
-      BlobServiceClient serviceClient = new BlobServiceClient(_connectionString);
-      BlobContainerClient blobContainerClient = serviceClient.GetBlobContainerClient(_containerName);
-      BlobClient blobClient = blobContainerClient.GetBlobClient(_blobName);
-
-      var response = blobClient.Download();
-      var reader = new StreamReader(response.Value.Content);
-
-      courses = JsonSerializer.Deserialize<List<Course>>(reader.ReadToEnd());
-      courses.Add(course);
-
-      var output = JsonSerializer.Serialize(courses, new JsonSerializerOptions
+      internal IEnumerable<Course> GetCourses()
       {
-        WriteIndented = true,
-      });
+        BlobServiceClient serviceClient = new BlobServiceClient(_connectionString);
+        BlobContainerClient blobContainerClient = serviceClient.GetBlobContainerClient(_containerName);
+        BlobClient blobClient = blobContainerClient.GetBlobClient(_blobName);
 
-      var content = Encoding.UTF8.GetBytes(output);
-      using (var ms = new MemoryStream(content))
-      {
-        blobClient.Upload(ms);
+        var response = blobClient.Download();
+        var reader = new StreamReader(response.Value.Content);
+        return JsonSerializer.Deserialize<Course[]>(reader.ReadToEnd());
       }
-    }
 
-    internal void CreateCourses()
-    {
-      List<Course> courses = new List<Course>
+      internal Course GetCourse(string id)
+      {
+        IEnumerable<Course> courses = this.GetCourses();
+        return courses.FirstOrDefault(c => c.CourseId == id);
+      }
+
+      internal void AddCourse(Course course)
+      {
+        List<Course> courses;
+        BlobServiceClient serviceClient = new BlobServiceClient(_connectionString);
+        BlobContainerClient blobContainerClient = serviceClient.GetBlobContainerClient(_containerName);
+        BlobClient blobClient = blobContainerClient.GetBlobClient(_blobName);
+
+        var response = blobClient.Download();
+        var reader = new StreamReader(response.Value.Content);
+
+        courses = JsonSerializer.Deserialize<List<Course>>(reader.ReadToEnd());
+        courses.Add(course);
+
+        var output = JsonSerializer.Serialize(courses, new JsonSerializerOptions
+        {
+          WriteIndented = true,
+        });
+
+        var content = Encoding.UTF8.GetBytes(output);
+        using (var ms = new MemoryStream(content))
+        {
+          blobClient.Upload(ms);
+        }
+      }
+
+      internal void CreateCourses()
+      {
+        List<Course> courses = new List<Course>
             {
                 new Course() { CourseId = 0, CourseName = "Course1", Rating=5},
                 new Course() { CourseId = 1, CourseName = "Course2", Rating=1},
@@ -70,13 +75,13 @@ namespace webapi.Services
                 new Course() { CourseId = 6, CourseName = "Course7", Rating=3}
             };
 
-      var highlyRatedCourses = courses.Where(c => c.Rating > 7);
-      var lowlyRatedCourses = courses.Where(c => c.Rating < 3);
+        var highlyRatedCourses = courses.Where(c => c.Rating > 7);
+        var lowlyRatedCourses = courses.Where(c => c.Rating < 3);
 
-      foreach (var item in highlyRatedCourses)
-      {
-        System.Console.WriteLine(item.CourseName);
+        foreach (var item in highlyRatedCourses)
+        {
+          System.Console.WriteLine(item.CourseName);
+        }
       }
     }
   }
-}

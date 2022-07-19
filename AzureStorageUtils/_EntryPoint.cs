@@ -12,10 +12,10 @@ namespace AzureStorageUtils
 {
   class _EntryPoint
   {
-    private static string connection_string = "DefaultEndpointsProtocol=https;AccountName=storageaccountrneme8f24;AccountKey=jAhzgzRLljSrgcqDFcRTARibzpjw/yCyaVgep57GErz2UvWvYel0vfpvzARWhXOZwDx/eyCP/ANJRdTbOeCwug==;EndpointSuffix=core.windows.net";
+    private static string connection_string = "";
     private static string container_name = "";
-    private static string table_name = "Products";
-    private static string queueName = "appqueue";
+    private static string table_name = "";
+    private static string queueName = "";
 
     static void Main(string[] args)
     {

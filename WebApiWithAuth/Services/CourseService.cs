@@ -16,7 +16,7 @@ namespace WebApiWithAuth.Services
         public IWebHostEnvironment _env;
 
 
-        private string storage_account_connection_string = "DefaultEndpointsProtocol=https;AccountName=appstore445577;AccountKey=5jk/QJO99okHBa0M/uZCjX0JNMTrbl2HG9kFfmAFp1ce15wSife+o0iXROEkSu9C17AqnawUchFKAq9a8nqyeg==;EndpointSuffix=core.windows.net";
+        private string storage_account_connection_string = "";
 
 
         public IEnumerable<Course> GetCourses()
